@@ -9,6 +9,7 @@
 
 #include "candy.h"
 
+// Bag class stores multiple candies and provides operations to manage them
 class Bag {
 private:
     candy** candies; // Dynamic array of candy pointers

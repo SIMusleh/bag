@@ -16,7 +16,8 @@ int main() {
     cout << "- We allow our beloved Candy Connoisseurs (yes, that'd be you) to build their own candy!\n";
     cout << "There's only one catch: To ensure that our customers explore their palate,\n";
     cout << "we only allow unique candy to be ordered in each bag. Don't think of it as a limitation, but as an EXPERIENCE!\n\n";
-
+    
+    // Ask user how many bags they want
     int numBags;
     cout << "How many bags of candy will you be ordering today? ";
     do {

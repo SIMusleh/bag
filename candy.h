@@ -9,6 +9,7 @@
 
 #include <string>
 
+// Enum for candy flavors
 enum flavorType {
     COTTON_CANDY,
     WATERMELON_BURST,
@@ -17,6 +18,7 @@ enum flavorType {
     COLA
 };
 
+// Enum for candy colors
 enum colorType {
     SCARLET_BLAZE,
     AZURE_SKY,
@@ -25,6 +27,7 @@ enum colorType {
     AMETHYST_HAZE
 };
 
+// Candy class represents a single cand with flavor and color
 class candy {
 private:
     flavorType flavor;
@@ -32,6 +35,7 @@ private:
 
 public:
     candy(flavorType f, colorType c);
+    // Returns the flavor of the candy
     flavorType getFlavor() const;
     colorType getColor() const;
     void setFlavor(flavorType f);
