@@ -27,9 +27,12 @@ int main() {
             cout << "Invalid input. Please enter a positive number: ";
         }
     } while (numBags < 1);
-
-    // Create dynamic array of Bag objects (capacity = 25 for each bag)
-    Bag* bags = new Bag[numBags]{ Bag(25) };
+    
+    // Dynamic array of Bag objects
+    Bag* bags = new Bag[numBags];
+    for (int i = 0; i < numBags; i++) {
+        bags[i] = Bag(25); // Each bag has capacity 25 
+        }
 
     int filled = 0;
     while (filled < numBags) {
