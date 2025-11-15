@@ -9,12 +9,19 @@
 #include <limits>
 using namespace std;
 
+Bag::Bag() {
+    capacity = 25;
+    size = 0;
+    candies = new candy*[capacity];
+}
+
 Bag::Bag(int capacity) {
     this->capacity = capacity;
     size = 0;
     candies = new candy*[capacity]; // Dynamic array of candy pointers
 }
 
+// Destructor
 Bag::~Bag() {
     for (int i = 0; i < size; i++) {
         delete candies[i]; // Delete each candy

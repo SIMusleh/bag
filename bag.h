@@ -16,6 +16,7 @@ private:
     int capacity;
 
 public:
+    Bag();
     Bag(int capacity); // Constructor
     ~Bag(); // Destructor
     Bag(const Bag& other); 

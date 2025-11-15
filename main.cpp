@@ -28,11 +28,7 @@ int main() {
         }
     } while (numBags < 1);
     
-    // Dynamic array of Bag objects
     Bag* bags = new Bag[numBags];
-    for (int i = 0; i < numBags; i++) {
-        bags[i] = Bag(25); // Each bag has capacity 25 
-        }
 
     int filled = 0;
     while (filled < numBags) {
@@ -55,7 +51,7 @@ int main() {
         }
         filled += (copies + 1);
     }
-
+    
     // Display all bags
     cout << "\nYour order:\n";
     for (int i = 0; i < numBags; i++) {
