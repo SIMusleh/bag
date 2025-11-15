@@ -28,8 +28,9 @@ int main() {
             cout << "Invalid input. Please enter a positive number: ";
         }
     } while (numBags < 1);
-    
-    Bag* bags = new Bag[numBags];
+
+    // Default constructor allows this now
+    bag* bags = new bag[numBags];
 
     int filled = 0;
     while (filled < numBags) {
@@ -52,7 +53,6 @@ int main() {
         }
         filled += (copies + 1);
     }
-    
     // Display all bags
     cout << "\nYour order:\n";
     for (int i = 0; i < numBags; i++) {
