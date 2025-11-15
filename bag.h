@@ -4,27 +4,27 @@
  * Purpose: Define the Bag class to hold candies and manage memory.
  */
 
- #ifndef BAG_H
- #define BAG_H
+#ifndef BAG_H
+#define BAG_H
 
- #include "candy.h"
- #include <string>
+#include "candy.h"
 
- class Bag {
- private:
+class Bag {
+private:
     candy** candies; // Dynamic array of candy pointers
     int size;
     int capacity;
 
- public:
+public:
     Bag(int capacity); // Constructor
-    Bag(const Bag& other);
     ~Bag(); // Destructor
+    Bag(const Bag& other); 
+    Bag& operator=(const Bag& other);
 
-    void fillBag();
     void copyBag(const Bag& other);
-    bool duplicatecheck(candy* newCandy) const; // Check duplicates
+    bool duplicateCheck(candy* newCandy) const; // Check duplicates
+    void fillBag();
     void displayBag() const; // Display candies
- };
- 
- #endif
+};
+
+#endif
