@@ -163,12 +163,16 @@ void bag::displayBag() const {
 
 // Added Missing Methods
 
-// Fixed overload for duplicateCheck (convert 1-based index to 0-based)
+// Fixed overload for duplicateCheck (search entire bag for a match)
 bool bag::duplicateCheck(int index, const candy& newCandy) const {
-    int actualIndex = index - 1; // Adjust for 1-based index
-    if (actualIndex < 0 || actualIndex >= size) return false;
-    return (candies[actualIndex]->getFlavor() == newCandy.getFlavor() &&
-            candies[actualIndex]->getColor() == newCandy.getColor());
+    // Ignore index, search entire bag for a match
+    for (int i = 0; i < size; i++) {
+        if (candies[i]->getFlavor() == newCandy.getFlavor() &&
+            candies[i]->getColor() == newCandy.getColor()) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // New method: getCandyList
