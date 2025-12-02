@@ -45,7 +45,6 @@ bag::bag(const bag& other) {
 // Assignment operator
 bag& bag::operator=(const bag& other) {
     if (this != &other) {
-        // Clean up existing candies
         for (int i = 0; i < size; i++) delete candies[i];
         delete[] candies;
 
@@ -83,9 +82,9 @@ bool bag::duplicateCheck(candy* newCandy) const {
     return false;
 }
 
-// Fill bag with candies
+// Corrected fillBag()
 void bag::fillBag() {
-    cout << "How many candies will you be ordering today? (range: 1-" << capacity << "): ";
+    cout << "How many candies will you be ordering today? (range: 1-" << capacity << ")\n";
     int numCandies;
     do {
         cin >> numCandies;
@@ -101,7 +100,7 @@ void bag::fillBag() {
 
         int flavorChoice, colorChoice;
 
-        cout << "Choose a flavor:\n"
+        cout << "Choose a flavor you would like:\n"
              << "[1] Cotton Candy\n[2] Watermelon Burst\n[3] Papaya Bliss\n[4] Citrus Splash\n[5] Cola\n";
         do {
             cin >> flavorChoice;
@@ -112,7 +111,10 @@ void bag::fillBag() {
             }
         } while (flavorChoice < 1 || flavorChoice > 5);
 
-        cout << "Choose a color:\n"
+        cout << flavorToString(static_cast<flavorType>(flavorChoice - 1)) << "? Great choice.\n";
+
+        cout << "\nChoose a color for your " 
+             << flavorToString(static_cast<flavorType>(flavorChoice - 1)) << " candy:\n"
              << "[1] Scarlet Blaze\n[2] Azure Sky\n[3] Emerald Mist\n[4] Goldenrod Glow\n[5] Amethyst Haze\n";
         do {
             cin >> colorChoice;
@@ -126,21 +128,31 @@ void bag::fillBag() {
         candy* newCandy = new candy(static_cast<flavorType>(flavorChoice - 1),
                                     static_cast<colorType>(colorChoice - 1));
 
+        cout << colorToString(static_cast<colorType>(colorChoice - 1)) << " "
+             << flavorToString(static_cast<flavorType>(flavorChoice - 1)) << " it is!\n";
+
         if (duplicateCheck(newCandy)) {
             cout << "But wait, this is not unique, try again.\n";
             delete newCandy;
             i--;
         } else {
             candies[size++] = newCandy;
-            cout << "Marvelous! Your candy was added to the order.\n";
+            cout << "Marvelous! Your candy was added to the order.\n\n";
+
+            // Show current order
+            cout << "Your order:\n";
+            for (int j = 0; j < size; j++) {
+                cout << "#" << (j + 1) << " " << candies[j]->colorToString()
+                     << " " << candies[j]->flavorToString() << "\n";
+            }
         }
     }
 }
 
-// Display bag contents
+// Corrected displayBag()
 void bag::displayBag() const {
     for (int i = 0; i < size; i++) {
-        cout << "#" << (i + 1) << ": " << candies[i]->colorToString()
+        cout << "#" << (i + 1) << " " << candies[i]->colorToString()
              << " " << candies[i]->flavorToString() << "\n";
     }
 }
