@@ -1,6 +1,6 @@
 /* Program name: bag.cpp
  * Author: Sahar Musleh
- * Date last updated: 12/01/2025
+ * Date last updated: 12/02/2025
  * Purpose: Implement the Bag class methods declared in bag.h.
  */
 
@@ -88,10 +88,13 @@ void bag::fillBag() {
     int numCandies;
     do {
         cin >> numCandies;
-        if (cin.fail() || numCandies < 1 || numCandies > capacity) {
+        if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input. Please enter a number between 1 and " << capacity << ": ";
+            cout << "That's not a number.\n";
+            cout << "Invalid entry. Number must be between 1 and " << capacity << " inclusive. Try again.\n";
+        } else if (numCandies < 1 || numCandies > capacity) {
+            cout << "Invalid entry. Number must be between 1 and " << capacity << " inclusive. Try again.\n";
         }
     } while (numCandies < 1 || numCandies > capacity);
 
@@ -104,10 +107,13 @@ void bag::fillBag() {
              << "[1] Cotton Candy\n[2] Watermelon Burst\n[3] Papaya Bliss\n[4] Citrus Splash\n[5] Cola\n";
         do {
             cin >> flavorChoice;
-            if (cin.fail() || flavorChoice < 1 || flavorChoice > 5) {
+            if (cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Invalid choice. Please enter 1-5: ";
+                cout << "That's not a number.\n";
+                cout << "Invalid entry. Number must be between 1 and 5 inclusive. Try again.\n";
+            } else if (flavorChoice < 1 || flavorChoice > 5) {
+                cout << "Invalid entry. Number must be between 1 and 5 inclusive. Try again.\n";
             }
         } while (flavorChoice < 1 || flavorChoice > 5);
 
@@ -120,10 +126,13 @@ void bag::fillBag() {
              << "[1] Scarlet Blaze\n[2] Azure Sky\n[3] Emerald Mist\n[4] Goldenrod Glow\n[5] Amethyst Haze\n";
         do {
             cin >> colorChoice;
-            if (cin.fail() || colorChoice < 1 || colorChoice > 5) {
+            if (cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Invalid choice. Please enter 1-5: ";
+                cout << "That's not a number.\n";
+                cout << "Invalid entry. Number must be between 1 and 5 inclusive. Try again.\n";
+            } else if (colorChoice < 1 || colorChoice > 5) {
+                cout << "Invalid entry. Number must be between 1 and 5 inclusive. Try again.\n";
             }
         } while (colorChoice < 1 || colorChoice > 5);
 

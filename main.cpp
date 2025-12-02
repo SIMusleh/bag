@@ -1,6 +1,6 @@
 /* Program name: main.cpp
  * Author: Sahar Musleh
- * Date last updated: 12/01/2025
+ * Date last updated: 12/02/2025
  * Purpose: Allow the user to create multiple bags of candy using Bag and Candy classes.
  */
 
@@ -31,6 +31,7 @@ int main() {
             cout << "Invalid entry. Number must be between 1 and 10000 inclusive. Try again.\n";
         }
     } while (numBags < 1 || numBags > 10000);
+
     // Default constructor allows this now
     bag* bags = new bag[numBags];
 
@@ -59,6 +60,7 @@ int main() {
         }
         filled += (copies + 1);
     }
+
     // Display all bags
     cout << "\nYour order:\n";
     for (int i = 0; i < numBags; i++) {
