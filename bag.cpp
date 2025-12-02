@@ -152,8 +152,8 @@ void bag::fillBag() {
             candies[size++] = newCandy;
             cout << "Marvelous! Your candy was added to the order.\n\n";
 
-            // Show current order
-            cout << "Your order:\n";
+            // Show current order with proper formatting
+            cout << "\nYour order:\n"; // newline before and after
             for (int j = 0; j < size; j++) {
                 cout << "#" << (j + 1) << " " << candies[j]->colorToString()
                      << " " << candies[j]->flavorToString() << "\n";
