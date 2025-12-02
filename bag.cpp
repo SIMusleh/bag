@@ -1,12 +1,13 @@
 /* Program name: bag.cpp
  * Author: Sahar Musleh
- * Date last updated: 11/14/2025
+ * Date last updated: 12/01/2025
  * Purpose: Implement the Bag class methods declared in bag.h.
  */
 
 #include "bag.h"
 #include <iostream>
 #include <limits>
+#include <sstream> // Added for getCandyList
 using namespace std;
 
 // Default constructor
@@ -142,4 +143,25 @@ void bag::displayBag() const {
         cout << "#" << (i + 1) << ": " << candies[i]->colorToString()
              << " " << candies[i]->flavorToString() << "\n";
     }
+}
+
+// Added Missing Methods
+
+// New overload for duplicateCheck
+bool bag::duplicateCheck(int index, const candy& newCandy) const {
+    if (index < 0 || index >= size) return false;
+    return (candies[index]->getFlavor() == newCandy.getFlavor() &&
+            candies[index]->getColor() == newCandy.getColor());
+}
+
+// New method: getCandyList
+std::string bag::getCandyList() const {
+    std::ostringstream oss;
+    for (int i = 0; i < size; i++) {
+        oss << "#" << (i + 1) << " "
+            << candies[i]->colorToString() << " "
+            << candies[i]->flavorToString();
+        if (i < size - 1) oss << "\n";
+    }
+    return oss.str();
 }

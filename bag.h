@@ -1,6 +1,6 @@
 /* Program name: bag.h
  * Author: Sahar Musleh
- * Date last updated: 11/14/2025
+ * Date last updated: 12/01/2025
  * Purpose: Define the bag class to hold candies and manage memory.
  */
 
@@ -8,6 +8,7 @@
 #define BAG_H
 
 #include "candy.h"
+#include <string>
 
 // bag class stores multiple candies and provides operations to manage them
 class bag {
@@ -25,6 +26,11 @@ public:
 
     void copyBag(const bag& other);
     bool duplicateCheck(candy* newCandy) const; // Check duplicates
+
+    // Added missing declarations:
+    bool duplicateCheck(int index, const candy& newCandy) const; // Overload for tests
+    std::string getCandyList() const; // Returns formatted list of candies
+
     void fillBag();
     void displayBag() const; // Display candies
 };
