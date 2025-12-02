@@ -1,6 +1,6 @@
 /* Program name: main.cpp
  * Author: Sahar Musleh
- * Date last updated: 11/14/2025
+ * Date last updated: 12/01/2025
  * Purpose: Allow the user to create multiple bags of candy using Bag and Candy classes.
  */
 
@@ -19,20 +19,23 @@ int main() {
     
     // Ask user how many bags they want
     int numBags;
-    cout << "How many bags of candy will you be ordering today? ";
+    cout << "How many bags of candy will you be ordering today? \n";
     do {
         cin >> numBags;
-        if (cin.fail() || numBags < 1) {
+        if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input. Please enter a positive number: ";
+            cout << "That's not a number.\n";
+            cout << "Invalid entry. Number must be between 1 and 10000 inclusive. Try again.\n";
+        } else if (numBags < 1 || numBags > 10000) {
+            cout << "Invalid entry. Number must be between 1 and 10000 inclusive. Try again.\n";
         }
-    } while (numBags < 1);
-
+    } while (numBags < 1 || numBags > 10000);
     // Default constructor allows this now
     bag* bags = new bag[numBags];
 
     int filled = 0;
+
     while (filled < numBags) {
         cout << "\nBag #" << (filled + 1) << " of " << numBags << "\n";
         bags[filled].fillBag();
@@ -41,10 +44,13 @@ int main() {
         int copies;
         do {
             cin >> copies;
-            if (cin.fail() || copies < 0 || copies > (numBags - filled - 1)) {
+            if (cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Invalid input. Enter a number between 0 and " << (numBags - filled - 1) << ": ";
+                cout << "That's not a number.\n";
+                cout << "Invalid entry. Number must be between 0 and " << (numBags - filled - 1) << " inclusive. Try again.\n";
+            } else if (copies < 0 || copies > (numBags - filled - 1)) {
+                cout << "Invalid entry. Number must be between 0 and " << (numBags - filled - 1) << " inclusive. Try again.\n";
             }
         } while (copies < 0 || copies > (numBags - filled - 1));
 

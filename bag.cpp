@@ -111,10 +111,12 @@ void bag::fillBag() {
             }
         } while (flavorChoice < 1 || flavorChoice > 5);
 
-        cout << flavorToString(static_cast<flavorType>(flavorChoice - 1)) << "? Great choice.\n";
+        // Create a temporary candy object for display
+        candy tempCandy(static_cast<flavorType>(flavorChoice - 1), SCARLET_BLAZE);
+        cout << tempCandy.flavorToString() << "? Great choice.\n";
 
         cout << "\nChoose a color for your " 
-             << flavorToString(static_cast<flavorType>(flavorChoice - 1)) << " candy:\n"
+             << tempCandy.flavorToString() << " candy:\n"
              << "[1] Scarlet Blaze\n[2] Azure Sky\n[3] Emerald Mist\n[4] Goldenrod Glow\n[5] Amethyst Haze\n";
         do {
             cin >> colorChoice;
@@ -128,8 +130,10 @@ void bag::fillBag() {
         candy* newCandy = new candy(static_cast<flavorType>(flavorChoice - 1),
                                     static_cast<colorType>(colorChoice - 1));
 
-        cout << colorToString(static_cast<colorType>(colorChoice - 1)) << " "
-             << flavorToString(static_cast<flavorType>(flavorChoice - 1)) << " it is!\n";
+        candy confirmCandy(static_cast<flavorType>(flavorChoice - 1),
+                           static_cast<colorType>(colorChoice - 1));
+        cout << confirmCandy.colorToString() << " "
+             << confirmCandy.flavorToString() << " it is!\n";
 
         if (duplicateCheck(newCandy)) {
             cout << "But wait, this is not unique, try again.\n";
